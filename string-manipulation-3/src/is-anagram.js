@@ -17,8 +17,6 @@ const isAnagram = (firstString, secondString) => {
     }
   }
 
-  console.log(tempArr);
-  console.log(tempArr2);
   if (tempArr.length === tempArr2.length) {
     for (let i = 0; i < tempArr2.length; i++) {
       for (let j = 0; j < tempArr.length; j++) {
@@ -27,11 +25,11 @@ const isAnagram = (firstString, secondString) => {
           tempArr.splice(j, 1);
         }
       }
-      if (tempArr2.length > 0) {
-        anagram = false;
-      }
+
     }
   }
 
+  console.log(tempArr);
+  console.log(tempArr2);
   return anagram;
 };
