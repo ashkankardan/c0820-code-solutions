@@ -1,35 +1,33 @@
 /* eslint-disable no-unused-vars */
 
 const isAnagram = (firstString, secondString) => {
-  let anagram = false;
-  const tempArr = [];
-  const tempArr2 = [];
+  const firstArr = [];
+  const secondArr = [];
 
   for (let i = 0; i < firstString.length; i++) {
     if (firstString[i] !== ' ') {
-      tempArr.push(firstString[i]);
+      firstArr.push(firstString[i]);
     }
   }
 
   for (let i = 0; i < secondString.length; i++) {
     if (secondString[i] !== ' ') {
-      tempArr2.push(secondString[i]);
+      secondArr.push(secondString[i]);
     }
   }
 
-  if (tempArr.length === tempArr2.length) {
-    for (let i = 0; i < tempArr2.length; i++) {
-      for (let j = 0; j < tempArr.length; j++) {
-        if (tempArr2[i] === tempArr[j]) {
-          anagram = true;
-          tempArr.splice(j, 1);
-        }
-      }
-
+  for (let i = 0; i < firstArr.length; i++) {
+    if (secondArr.indexOf(firstArr[i]) !== -1) {
+      secondArr.splice(secondArr.indexOf(firstArr[i]), 1);
+      firstArr.splice(i, 1);
+    } else if (secondArr.indexOf(firstArr[i]) === -1) {
+      return false;
     }
   }
 
-  console.log(tempArr);
-  console.log(tempArr2);
-  return anagram;
+  if (firstArr.length !== secondArr.length) {
+    return false;
+  }
+
+  return true;
 };
