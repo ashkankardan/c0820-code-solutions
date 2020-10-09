@@ -9,7 +9,7 @@ fs.readFile(fromFile, 'utf8', (err, data) => {
   if (err) throw err;
   const content = data;
 
-  fs.writeFile(toFile, content, err => {
+  fs.writeFile(toFile, content + '\n', err => {
     if (err) throw err;
     console.log('successful!!');
   });
