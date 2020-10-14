@@ -9,10 +9,9 @@ app.get('/api/grades', (req, res) => {
   res.json(grades);
 });
 
-app.post('/api/grades', (req, res, next) => {
+app.post('/api/grades', (req, res) => {
   newEntry(req.body);
-  res.status(201).end();
-  next();
+  res.status(201).send(grades);
 });
 
 const newEntry = data => {
