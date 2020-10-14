@@ -15,6 +15,9 @@ const studentData = [
   }
 ];
 
+const serveFiles = express.static('public');
+app.use(serveFiles);
+
 app.get('/api/grades', (req, res) => {
   res.send(studentData);
 });
