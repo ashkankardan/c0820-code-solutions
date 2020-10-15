@@ -1,0 +1,17 @@
+.container {
+  margin: auto;
+  width: 50%;
+  background-color: rgb(51, 51, 51);
+}
+
+form input {
+  width: 90%;
+  display: block;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+button {
+  margin: auto;
+  width: 100%;
+}
