@@ -21,7 +21,8 @@ app.get('/api/grades', (req, res) => {
 });
 
 app.delete('/api/grades/:id', (req, res) => {
-  studentData.splice((req.params.id - 1), 1);
+  const ObjIndex = studentData.findIndex(item => item.id === req.params.id);
+  studentData.splice(ObjIndex, 1);
   res.sendStatus(204);
 });
 
