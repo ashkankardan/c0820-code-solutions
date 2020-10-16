@@ -7,9 +7,11 @@ const data = require('./data.json');
 const notes = data.notes;
 
 app.get('/api/notes', (req, res) => {
-  if (req.params.id === undefined) {
-    res.send(notes);
+  const notesArr = [];
+  for (const item in notes) {
+    notesArr.push(notes[item]);
   }
+  res.send(notesArr);
 });
 
 app.get('/api/notes/:id', (req, res) => {
@@ -21,7 +23,7 @@ app.get('/api/notes/:id', (req, res) => {
       error: 'id must be a positive integer'
     });
   } else {
-    res.status(400).send({
+    res.status(404).send({
       error: `cannot find note with id ${parsedId}`
     });
   }
@@ -37,9 +39,13 @@ app.post('/api/notes', (req, res) => {
     data.nextId++;
     const dataStr = JSON.stringify(data, null, 2);
     fs.writeFile('data.json', dataStr, 'utf8', err => {
-      if (err) throw err;
+      if (err) {
+        res.status(505).send({
+          error: 'An unexpected error occurred.'
+        });
+      }
+      res.status(201).json(newNote);
     });
-    res.status(201).json(newNote);
   } else {
     res.status(400).send({
       error: 'content is a required field'
