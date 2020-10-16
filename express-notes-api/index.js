@@ -40,11 +40,12 @@ app.post('/api/notes', (req, res) => {
     const dataStr = JSON.stringify(data, null, 2);
     fs.writeFile('data.json', dataStr, 'utf8', err => {
       if (err) {
-        res.status(505).send({
+        res.status(500).send({
           error: 'An unexpected error occurred.'
         });
+      } else {
+        res.status(201).json(newNote);
       }
-      res.status(201).json(newNote);
     });
   } else {
     res.status(400).send({
@@ -62,12 +63,13 @@ app.delete('/api/notes/:id', (req, res) => {
     const dataStr = JSON.stringify(data, null, 2);
     fs.writeFile('data.json', dataStr, 'utf8', err => {
       if (err) {
-        res.status(505).send({
+        res.status(500).send({
           error: 'An unexpected error occurred.'
         });
+      } else {
+        res.sendStatus(204);
       }
     });
-    res.sendStatus(204);
   } else if (isNaN(parsedId)) {
     res.status(400).send({
       error: 'id must be a positive integer'
@@ -99,13 +101,14 @@ app.put('/api/notes/:id', (req, res) => {
   } else {
     notes[parsedId].content = req.body.content;
     const dataStr = JSON.stringify(data, null, 2);
-    fs.writeFile('data.json', dataStr, 'utf8', err => {
+    fs.writeFile('def/data.json', dataStr, 'utf8', err => {
       if (err) {
-        res.status(505).send({
+        res.status(500).send({
           error: 'An unexpected error occurred.'
         });
+      } else {
+        res.status(200).json(notes[parsedId]);
       }
-      res.status(200).json(notes[parsedId]);
     });
   }
 });
