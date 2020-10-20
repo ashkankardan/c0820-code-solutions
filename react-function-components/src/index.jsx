@@ -8,5 +8,5 @@ function CustomButton() {
 }
 
 ReactDom.render(
-  CustomButton(), rootEl
+  <CustomButton />, rootEl
 );
