@@ -1,0 +1,43 @@
+.rootDivEl {
+  display: flex;
+  justify-content: center;
+}
+
+.SCon-on,
+.SCon-off {
+  width: 100px;
+  height: 50px;
+  border: 5px solid black;
+  border-radius: 30px;
+}
+
+.SCon-on {
+  background-color: green;
+}
+
+.SCon-off {
+  background-color: gray;
+}
+
+.switch-on,
+.switch-off {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid black;
+  margin-top: -3px;
+}
+
+.switch-on {
+  transform: translateX(46px);
+}
+
+.switch-off {
+  transform: translateX(-2px);
+}
+
+.text {
+  font-size: 3rem;
+  margin-left: 10px;
+}
