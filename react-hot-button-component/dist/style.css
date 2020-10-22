@@ -1,0 +1,37 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  font-size: 1rem;
+  padding: 7px 15px;
+}
+
+.bc-dark-purple {
+  background-color: rgb(53, 28, 117);
+  color: white;
+}
+
+.bc-light-purple {
+  background-color: rgb(103, 78, 167);
+  color: white;
+}
+
+.bc-pink {
+  background-color: rgb(224, 102, 102);
+  color: white;
+}
+
+.bc-orange {
+  background-color: rgb(246, 178, 107);
+}
+
+.bc-yellow {
+  background-color: rgb(255, 252, 3);
+}
+
+.bc-white {
+  background-color: rgb(255, 255, 255);
+}
