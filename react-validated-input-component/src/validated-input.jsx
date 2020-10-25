@@ -11,14 +11,12 @@ export default class ValidatedInput extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleChange(event) {
     this.setState({
       value: event.target.value
     });
-    console.log(event.target.value);
 
     if (event.target.value.length === 0) {
       this.setState(state => ({
@@ -33,17 +31,25 @@ export default class ValidatedInput extends React.Component {
         icon: 'fas fa-times',
         error: 'Your password is too short.'
       }));
-    } else {
+    } else if (
+      event.target.value.length >= 8 &&
+      /([A-Z]+)/.test(event.target.value) &&
+      /(\d+)/.test(event.target.value) &&
+      /(!|@|#|\$|%|\^|&|\*|\(|\)+)/.test(event.target.value)
+    ) {
       this.setState(state => ({
         icon: 'fas fa-check',
         error: ''
       }));
+    } else {
+      this.setState(state => ({
+        icon: 'fas fa-times',
+        error: 'Your password is not strong enough!'
+      }));
     }
-
   }
 
   handleSubmit(event) {
-    console.log(this.state.value);
     event.preventDefault();
   }
 
@@ -57,11 +63,11 @@ export default class ValidatedInput extends React.Component {
             value={ this.state.value }
             onChange={ this.handleChange }
             id="password"
-
           />
         </form>
         <i className={ this.state.icon } ></i>
         <p className={ 'error' }> { this.state.error } </p>
+        <h3> Input Value: { this.state.value } </h3>
       </div>
     );
   }
