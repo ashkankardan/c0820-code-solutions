@@ -55,8 +55,11 @@ class App extends React.Component {
     const tempTodoData = this.state.todos.slice();
     const todoItem = tempTodoData.filter(obj => obj.id === todoId)[0];
     const todoItemIndex = tempTodoData.indexOf(todoItem);
-    todoItem.isCompleted = !todoItem.isCompleted;
-    const todoItemStr = JSON.stringify(todoItem);
+    const newTodoObj = {};
+    newTodoObj.id = todoItem.id;
+    newTodoObj.task = todoItem.task;
+    newTodoObj.isCompleted = !todoItem.isCompleted;
+    const todoItemStr = JSON.stringify(newTodoObj);
 
     fetch(`/api/todos/${todoId}`, {
       method: 'PATCH',
