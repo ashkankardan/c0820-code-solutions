@@ -19,6 +19,11 @@
       "task": "Do Stuff!",
       "isCompleted": false,
       "id": 8
+    },
+    {
+      "task": "new",
+      "isCompleted": true,
+      "id": 9
     }
   ]
 }

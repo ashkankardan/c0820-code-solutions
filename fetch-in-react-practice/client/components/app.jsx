@@ -41,7 +41,7 @@ class App extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        const newTodosArr = this.state.todos;
+        const newTodosArr = this.state.todos.slice();
         newTodosArr.push(data);
         this.setState({
           todos: newTodosArr
@@ -52,8 +52,9 @@ class App extends React.Component {
 
   toggleCompleted(todoId) {
 
-    const todoItem = this.state.todos.filter(obj => obj.id === todoId)[0];
-    const todoItemIndex = this.state.todos.indexOf(todoItem);
+    const tempTodoData = this.state.todos.slice();
+    const todoItem = tempTodoData.filter(obj => obj.id === todoId)[0];
+    const todoItemIndex = tempTodoData.indexOf(todoItem);
     todoItem.isCompleted = !todoItem.isCompleted;
     const todoItemStr = JSON.stringify(todoItem);
 
@@ -66,9 +67,9 @@ class App extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        this.state.todos.splice(todoItemIndex, 1, data);
+        tempTodoData.splice(todoItemIndex, 1, data);
         this.setState({
-          todos: this.state.todos
+          todos: tempTodoData
         });
       });
   }
